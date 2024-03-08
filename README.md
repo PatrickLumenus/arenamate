@@ -37,11 +37,20 @@ In order to run arena search operations, you will also need to index the followi
 -   `fill_rate`: Ascending,
 -   `_name_`: Ascending
 
+| Collection ID | Fields Indexed                                                                | Query Scope | Description                                              |
+| ------------- | ----------------------------------------------------------------------------- | ----------- | -------------------------------------------------------- |
+| arenas        | closed_at Ascending created_at Ascending **name** Ascending                   | Collection  | Used to query open arenas that need to be forced-closed. |
+| arenas        | closed_at Ascending guild_id Ascending fill_rate Ascending **name** Ascending | Collection  | Used to search for open arenas                           |
+
 ### Redis
 
 ArenaMate uses Redis to run scheduled tasks. You will need to provide the following Environment Variables for ArenaMate to connect to your Redis Database.
 
-TODO
+-   `REDIS_HOST`
+-   `REDIS_PORT`
+-   `REDIS_USERNAME`
+-   `REDIS_PASSWORD`
+-   `REDIS_DB`
 
 ## Starting ArenaMate
 
@@ -65,4 +74,4 @@ npm run start
 
 ## License
 
-ArenaMate is provided to you under the [MIT License](./../LICENSE)
+ArenaMate is provided to you under the [MIT License](./LICENSE)
