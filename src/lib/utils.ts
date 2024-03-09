@@ -213,11 +213,11 @@ export const createEmbedForUpdatedArena = (arena: ArenaInfo) => {
 export const createEmbedForClosedArena = (arena: ArenaInfo, channel: TextChannel) => {
 	const arenaOwner = userMention(arena.arena_owner);
 	const arenaChannel = `#${channel.name}`;
-	const creation = DateTime.fromISO(arena.created_at).setZone('utc');
+	const creation = DateTime.fromJSDate(arena.created_at).setZone('utc');
 	let destruction: DateTime | null = null;
 
 	if (arena.closed_at) {
-		destruction = DateTime.fromISO(arena.closed_at).setZone('utc');
+		destruction = DateTime.fromJSDate(arena.closed_at).setZone('utc');
 	}
 
 	const embed = new EmbedBuilder()
@@ -243,11 +243,11 @@ export const createEmbedForClosedArena = (arena: ArenaInfo, channel: TextChannel
 
 export const createEmbedForForceClosedArena = (arena: ArenaInfo, channel: TextChannel) => {
 	const arenaChannel = `#${channel.name}`;
-	const creation = DateTime.fromISO(arena.created_at).setZone('utc');
+	const creation = DateTime.fromJSDate(arena.created_at).setZone('utc');
 	let destruction: DateTime | null = null;
 
 	if (arena.closed_at) {
-		destruction = DateTime.fromISO(arena.closed_at).setZone('utc');
+		destruction = DateTime.fromJSDate(arena.closed_at).setZone('utc');
 	}
 
 	const embed = new EmbedBuilder()
@@ -399,12 +399,7 @@ export const createEmbedForMovedArenas = (newCategory: CategoryChannel, count: n
 		.setTitle('Arena Channels Have Been Moved')
 		.setDescription(`${count} arena channels have been moved to ${channelMention(newCategory.id)}`)
 		.setFooter({ text: embedSignatureText })
-		.setColor(0xffff00)
-		.addFields(
-			{ name: 'Arena', value: channelMention(arena.arena_channel_id) },
-			{ name: 'User', value: userMention(user.id) },
-			{ name: 'Current Players', value: `${arena.arena_current_players}/${arena.arena_size}` }
-		);
+		.setColor(0xffff00);
 };
 
 /**
