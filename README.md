@@ -57,12 +57,20 @@ ArenaMate uses Redis to run scheduled tasks. You will need to provide the follow
 
 To start, ArenaMate, follow the below instructions.
 
-## Install
+## Install Dependencies
 
 ArenaMate requires NodeJS v18 or newer. To install dependencies, run the follwoing command.
 
 ```sh
 npm install
+```
+
+## Build the Bot
+
+Next, you will need to build the bot.
+
+```sh
+npm run build
 ```
 
 ### Starting ArenaMate
